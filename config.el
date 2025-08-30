@@ -398,3 +398,11 @@ should be continued."
   :demand t
   :after (:all org python R)
 )
+(setq org-roam-capture-templates
+    '(("d" "default" plain (function org-roam--capture-get-point)
+     	"%?"
+     	:file-name "%<%Y%m%d%H%M%S>-${slug}"
+     	:head "#+TITLE: ${title}\n"
+     	:unnarrowed t)
+     )
+    )
