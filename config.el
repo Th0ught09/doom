@@ -125,17 +125,23 @@
 
 (custom-set-variables
  '(org-directory "~/org")
- '(org-agenda-files (list "~/org/agenda/"))
+ '(org-agenda-files (list "~/org/agenda"))
  '(diary-file "~/org/diary.org"))
+
+
+(setq org-agenda-files (list "~/org/agenda"))
+
+(after! org
+  (setq org-agenda-files (list "~/org/agenda")))
 
 
 (setq org-tag-alist (quote ((:startgroup)
                             ("@uniLibrary". ?u)
+                            ("@withlib". ?w)
                             ("@home" . ?h)
                             (:endgroup))))
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-roam-directory (file-truename "~/org"))
 ;=================================================================
 ; VIM BINDINGS
 ;=================================================================
@@ -219,11 +225,14 @@
 ;=================================================================
 ; mmdc
 ; =================================================================
+
+
 (define-key ctl-x-map "p" 'emms-pause)
 (define-key ctl-x-map "P" 'org-pomodoro)
 (global-set-key (kbd "M-i") 'ace-window)
 (global-set-key (kbd "C-c f") 'org-roam-node-find)
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
+(global-set-key (kbd "C-c r") 'org-roam-refile)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
@@ -406,3 +415,13 @@ should be continued."
      	:unnarrowed t)
      )
     )
+
+;; (set-frame-parameter nil 'alpha-background 50) ; For current frame
+;; (add-to-list 'default-frame-alist '(alpha-background . 50)) ; For all new frames henceforth
+
+; figure out another time
+(defun org-roam-refile-today()
+  (interactive)
+  'org-roam-refile (org-roam-dailies-goto-today))
+
+(global-set-key (kbd "C-c t") 'org-roam-refile-today)
