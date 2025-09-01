@@ -409,11 +409,11 @@ should be continued."
   :after (:all org python R)
 )
 (setq org-roam-capture-templates
-    '(("d" "default" plain "%?"
+    '("d" "default" plain "%?"
        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                           "#+title: ${title}\n")
-       :unnarrowed t))
-)
+       :unnarrowed t)
+    )
 
 ;; (set-frame-parameter nil 'alpha-background 50) ; For current frame
 ;; (add-to-list 'default-frame-alist '(alpha-background . 50)) ; For all new frames henceforth

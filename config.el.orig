@@ -211,7 +211,6 @@
 (setq! scroll-margin 8)
 (setq! find-file-visit-truename nil)
 (setq evil-shift-width 4)
-(setq org-startup-with-latex-preview t)
 (setq emms-source-file-default-directory "~/music/")
 (setq company-mode nil)
 (setq emms-repeat-playlist t)
@@ -408,12 +407,17 @@ should be continued."
   :demand t
   :after (:all org python R)
 )
+<<<<<<< Updated upstream
 (setq org-roam-capture-templates
-    '(("d" "default" plain "%?"
-       :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
-                          "#+title: ${title}\n")
-       :unnarrowed t))
-)
+    '(("d" "default" plain (function org-roam--capture-get-point)
+     	"%?"
+     	:file-name "%<%Y%m%d%H%M%S>-${slug}"
+     	:head "#+TITLE: ${title}\n"
+     	:unnarrowed t)
+     )
+    )
+||||||| Stash base
+=======
 
 ;; (set-frame-parameter nil 'alpha-background 50) ; For current frame
 ;; (add-to-list 'default-frame-alist '(alpha-background . 50)) ; For all new frames henceforth
@@ -424,3 +428,4 @@ should be continued."
   'org-roam-refile (org-roam-dailies-goto-today))
 
 (global-set-key (kbd "C-c t") 'org-roam-refile-today)
+>>>>>>> Stashed changes
