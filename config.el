@@ -21,7 +21,7 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 20 :weight 'semi-light))
+(setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 24 :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -40,6 +40,10 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
+(eval-when-compile
+  (add-to-list 'load-path "/nix/store/0m88mq6p3mdlq6fi6199qmma2cazisfc-emacs-mu4e-1.12.11/share/emacs/site-lisp/elpa/mu4e-1.12.11")
+  (require 'use-package))
 
 (setq user-mail-address "kirkmatt@proton.me")
 (use-package mu4e
@@ -198,6 +202,7 @@
 ;=================================================================
 ; Hooks
 ; =================================================================
+(add-hook 'justl-mode-hook (lambda () (evil-local-mode -1)))
 (add-hook 'org-mode-hook 'abbrev-hook)
 (add-hook 'minibuffer-mode-hook 'abbrev-hook)
 (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)

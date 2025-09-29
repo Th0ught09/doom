@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# name: plan
+# uuid:
+# key: plan
+# condition: t
+# --
+
+
+* plan
+
+** metalearning
+
+*** concepts
+
+*** facts
+
+*** procedures
+
+
+** focus
+
+
+** drill
+
+
+** retrieval
+
+
+** feedback
+
+
+** retention
+
+
+** intuition
+
+
+** experimentation

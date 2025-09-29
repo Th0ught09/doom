@@ -6,15 +6,14 @@
  '(diary-file "~/org/diary.org")
  '(org-agenda-files (list "~/org/agenda"))
  '(org-directory "~/org")
- '(org-roam-directory "~/org")
- '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
-   '(ace-window chess dashboard diary-manager doc-view-follow emms ess evil-mu4e
-     flycheck-rust iosevka-theme javadoc-lookup javaimp jupyter justl leetcode
-     lsp-javacomp mermaid-docker-mode mermaid-ts-mode mu4e-overview mu4e-views
-     nix-mode ob-mermaid ob-nix org-journal org-noter-pdftools org-pdftools
-     org-pomodoro org-roam org-roam-ui org-sidebar org-trello pdf-tools
-     pdf-view-pagemark rust-mode s slime vterm xkcd)))
+   '(ace-window cdlatex chess diary-manager doc-view-follow esqlite ess
+     flycheck-rust ghci-completion gnuplot haskell-mode javadoc-lookup javaimp
+     jupyter just-mode justl leetcode lsp-javacomp mermaid-docker-mode
+     mermaid-ts-mode mu4e-overview mu4e-views nix-mode ob-ipython ob-mermaid
+     ob-nix org-journal org-noter-pdftools org-pomodoro org-roam-ui org-sidebar
+     org-trello org-xlatex pass pdf-view-pagemark ruff-format rust-mode sqlite3
+     vterm x86-lookup xkcd)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
