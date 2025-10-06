@@ -429,3 +429,35 @@ should be continued."
   'org-roam-refile (org-roam-dailies-goto-today))
 
 (global-set-key (kbd "C-c t") 'org-roam-refile-today)
+
+
+;; el gantt
+(add-to-list 'load-path "~/Dotfiles/.config/doom/lisp/elgantt/")
+(require 'elgantt)
+(setq elgantt-agenda-files "~/org/agenda/diss_index.org")
+(setq elgantt-user-set-color-priority-counter 0)
+(elgantt-create-display-rule draw-scheduled-to-deadline
+  :parser ((elgantt-color . ((when-let ((colors (org-entry-get (point) "ELGANTT-COLOR")))
+                               (s-split " " colors)))))
+  :args (elgantt-scheduled elgantt-color elgantt-org-id)
+  :body ((when elgantt-scheduled
+           (let ((point1 (point))
+                 (point2 (save-excursion
+                           (elgantt--goto-date elgantt-scheduled)
+                           (point)))
+                 (color1 (or (car elgantt-color)
+                             "white"))
+                 (color2 (or (cadr elgantt-color)
+                             "yellow")))
+             (when (/= point1 point2)
+               (elgantt--draw-gradient
+                color1
+                color2
+                (if (< point1 point2) point1 point2) ;; Since cells are not necessarily linked in
+                (if (< point1 point2) point2 point1) ;; chronological order, make sure they are sorted
+                nil
+                `(priority ,(setq elgantt-user-set-color-priority-counter
+                                  (1- elgantt-user-set-color-priority-counter))
+                           ;; Decrease the priority so that earlier entries take
+                           ;; precedence over later ones (note: it doesn’t matter if the number is negative)
+                           :elgantt-user-overlay ,elgantt-org-id)))))))
