@@ -129,14 +129,14 @@
 
 (custom-set-variables
  '(org-directory "~/org")
- '(org-agenda-files (list "~/org/agenda"))
+ '(org-agenda-files (concat (list "~/org/agenda") (list "~/org/daily/")))
  '(diary-file "~/org/diary.org"))
 
 
-(setq org-agenda-files (list "~/org/agenda"))
-
-(after! org
-  (setq org-agenda-files (list "~/org/agenda")))
+(setq org-agenda-files
+      (append
+       (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
+       (directory-files-recursively (expand-file-name "~/org/daily")   "\\.org$")))
 
 
 (setq org-tag-alist (quote ((:startgroup)
