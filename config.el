@@ -31,7 +31,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox-light)
+(setq doom-theme 'doom-gruvbox-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -461,3 +461,8 @@ should be continued."
                            ;; Decrease the priority so that earlier entries take
                            ;; precedence over later ones (note: it doesn’t matter if the number is negative)
                            :elgantt-user-overlay ,elgantt-org-id)))))))
+(setq elgantt-header-type 'outline
+      elgantt-insert-blank-line-between-top-level-header t
+      elgantt-startup-folded nil
+      elgantt-show-header-depth t
+      elgantt-draw-overarching-headers t)
