@@ -13,7 +13,7 @@
      mermaid-ts-mode mu4e-overview mu4e-views nix-mode ob-ipython ob-mermaid
      ob-nix org-journal org-noter-pdftools org-pomodoro org-roam-ui org-sidebar
      org-trello org-xlatex pass pdf-view-pagemark ruff-format rust-mode sqlite3
-     vterm x86-lookup xkcd)))
+     vterm x86-lookup xkcd yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
