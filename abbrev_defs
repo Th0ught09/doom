@@ -31,6 +31,4 @@
     ("shrt" "shorthand" nil :count 5)
     ("sys" "system" nil :count 1)
     ("thn" "then" nil :count 0)
-    ("vs" "vimscript" nil :count 7)
    ))
-
