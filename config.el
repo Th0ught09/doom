@@ -148,9 +148,8 @@
 (setq org-icalendar-timezone "Europe/London")
 (setq emms-repeat-playlist t)
 (setq centaur-tabs-mode nil)
-(setq yas-snippet-dirs '("~/Dotfiles/.config/doom/snippets"))
 (setq ob-mermaid-cli-path "~/.nix-profile/bin/mmdc")
-(setq yas-snippet-dirs '("~/.config/emacs/snippets"))
+(setq yas-snippet-dirs '("~/Dotfiles/.config/doom/snippets"))
 (setq tab-width 4)
 (setq evil-shift-width 4)
 
@@ -228,8 +227,7 @@
 
 (setq org-agenda-files
       (append
-       (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
-       (directory-files-recursively (expand-file-name "~/org/daily")   "\\.org$")))
+       (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")))
 
 (setq org-tag-alist (quote ((:startgroup)
                             ("@uniLibrary". ?u)
@@ -286,7 +284,7 @@
 (setq gnutls-trustfiles
       (append gnutls-trustfiles
               '("~/.jupyter/jupyter.crt")))
-
+(setq ob-async-no-async-languages-alist '("jupyter-python"))
 
 ;=================================================================
 ; el gantt
