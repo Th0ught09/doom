@@ -229,10 +229,13 @@
       (append
        (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")))
 
+
+
 (setq org-tag-alist (quote ((:startgroup)
                             ("@uniLibrary". ?u)
                             ("@withlib". ?w)
                             ("@home" . ?h)
+                            ("@north" . ?n)
                             (:endgroup))))
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))

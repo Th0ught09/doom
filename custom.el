@@ -88,9 +88,10 @@
  '(org-directory "~/org")
  '(org-roam-directory "/home/kirkm/org/")
  '(package-selected-packages
-   '(ace-window corfu corfu-candidate-overlay djvu el-get ess gnuplot helm-R
-     jupyter justl nov ob-ipython ob-latex-as-png ob-mermaid org-drill
-     org-pomodoro org-ql org-roam org-roam-ui persist sx wikinfo)))
+   '(ace-window corfu corfu-candidate-overlay djvu el-get ess ghci-completion
+     gnuplot helm-R html2org jupyter justl leetcode nov ob-ipython
+     ob-latex-as-png ob-mermaid org-drill org-pomodoro org-ql org-roam
+     org-roam-ui persist sx wikinfo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
