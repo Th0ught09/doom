@@ -4,6 +4,7 @@
 (setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 30 :weight 'semi-light))
 (setq doom-theme 'doom-gruvbox-light)
 (setq display-line-numbers-type 'visual)
+(setq display-line-numbers 'visual)
 
 (require 'cl)
 
@@ -227,7 +228,8 @@
 
 (setq org-agenda-files
       (append
-       (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")))
+       (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
+       (directory-files-recursively (expand-file-name "~/org/recall")  "\\.org$")))
 
 
 
@@ -236,6 +238,7 @@
                             ("@withlib". ?w)
                             ("@home" . ?h)
                             ("@north" . ?n)
+                            ("drill" . ?d)
                             (:endgroup))))
 
 (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -269,8 +272,8 @@
 ;=================================================================
 ; TODO
 ; =================================================================
-(setq org-todo-keywords '((sequence "TODO" "|" "DONE" "HOLD")
-                          (sequence "PRAC" "|" "COMP")))
+(setq org-todo-keywords '(sequence "TODO(t)" "|" "DONE(d)" "HOLD(h)")
+                          (sequence "PRAC(p)" "|" "COMP(c)")))
 
 ;=================================================================
 ; jupyter
