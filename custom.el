@@ -90,8 +90,8 @@
  '(package-selected-packages
    '(ace-window corfu corfu-candidate-overlay djvu el-get ess ghci-completion
      gnuplot helm-R html2org jupyter justl leetcode nov ob-ipython
-     ob-latex-as-png ob-mermaid org-drill org-pomodoro org-ql org-roam
-     org-roam-ui persist sx tldr w3m wikinfo)))
+     ob-latex-as-png ob-mermaid org-drill org-pdftools org-pomodoro org-ql
+     org-roam org-roam-ui pdf-tools persist sx tldr w3m wikinfo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
