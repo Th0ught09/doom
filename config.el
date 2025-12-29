@@ -231,7 +231,7 @@
 (setq org-agenda-files
       (append
        (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
-       (directory-files-recursively (expand-file-name "~/org/recall")  "\\.org$")))
+       (directory-files-recursively (expand-file-name "~/recall")  "\\.org$")))
 
 
 
