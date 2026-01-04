@@ -154,6 +154,19 @@
 (setq yas-snippet-dirs '("~/Dotfiles/.config/doom/snippets"))
 (setq tab-width 4)
 (setq evil-shift-width 4)
+(setq org-agenda-span 'day)
+(setq org-agenda-start-day "-0d")
+
+;=================================================================
+; functions
+;=================================================================
+(defun window-back (n)
+  "Move back a window"
+  (interactive "p")
+  (other-window (- n)))
+;; (defun agenda-today ()
+;;   (interactive)
+;;   (org-agenda-compute-starting-span 5 'day))
 
 ;=================================================================
 ; bindings
@@ -161,10 +174,11 @@
 
 (define-key ctl-x-map "p" 'emms-pause)
 (define-key ctl-x-map "P" 'org-pomodoro)
+(global-set-key (kbd "C-c n") 'org-capture)
 (global-set-key (kbd "M-i") 'ace-window)
 (global-set-key (kbd "C-c f") 'org-roam-node-find)
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
-(global-set-key (kbd "C-c d a") 'org-agenda-day-view)
+;; (global-set-key (kbd "C-c d a") (org-agenda-day-view 4))
 (global-set-key (kbd "C-c r") 'org-roam-refile)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
@@ -451,3 +465,5 @@ See `pdf-links-action-perform' for the interface."
          (edges (append (cl-subseq start 0 2) (cl-subseq end 2 4))))
     (pdf-annot-add-markup-annotation
      edges 'highlight '"yellow") nil))
+
+

@@ -9,6 +9,7 @@
     ("emc" "emacs" nil :count 13)
     ("func" "function" nil :count 1)
     ("hs" "haskell" nil :count 9)
+    ("ml" "machine learning" nil :count 2)
     ("shrt" "shorthand" nil :count 6)
     ("sw" "software" nil :count 8)
    ))
@@ -32,3 +33,4 @@
     ("sys" "system" nil :count 1)
     ("thn" "then" nil :count 0)
    ))
+
