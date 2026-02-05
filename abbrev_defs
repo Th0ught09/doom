@@ -20,7 +20,6 @@
     ("bns" "business" nil :count 1)
     ("dir" "directory" nil :count 2)
     ("emc" "emacs" nil :count 2)
-    ("env" "environment" nil :count 2)
     ("fnd" "find" nil :count 0)
     ("hs" "haskell" nil :count 7)
     ("lang" "language" nil :count 1)

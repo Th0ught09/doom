@@ -3,9 +3,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("bf658d8c16dea1ee035e3bc3c8749965bc248acb1cc2cf0a1b0f7ccb53a4ca56"
+     "691d671429fa6c6d73098fc6ff05d4a14a323ea0a18787daeb93fde0e48ab18b" default))
  '(diary-file "~/org/diary.org")
  '(org-agenda-files
-   '("~/org/agenda/20250726080620-admin.org"
+   '("~/org/agenda/calendar.org"
+     "/home/kirkm/org/agenda/20260201202137-internet_of_things_index.org"
+     "/home/kirkm/org/agenda/20260201202122-chip_multiprogramming_index.org"
+     "/home/kirkm/org/agenda/20260201202132-maths_systems_and_complexity_index.org"
+     "/home/kirkm/org/agenda/20260201202142-agile_index.org"
+     "/home/kirkm/org/agenda/20250726080620-admin.org"
      "/home/kirkm/org/agenda/20250616203545-x86_schedule.org"
      "/home/kirkm/org/agenda/20250617071133-org_schedule.org"
      "/home/kirkm/org/agenda/20250625082757-pandas_todo.org"
@@ -52,10 +60,11 @@
  '(org-directory "~/org")
  '(org-roam-directory "/home/kirkm/org/")
  '(package-selected-packages
-   '(ace-window corfu corfu-candidate-overlay djvu el-get ess ghci-completion
-     gnuplot helm-R html2org jupyter justl leetcode nov ob-ipython
-     ob-latex-as-png ob-mermaid org-drill org-pdftools org-pomodoro org-ql
-     org-roam org-roam-ui pdf-tools persist sx tldr wikinfo)))
+   '(ace-window cabal-mode corfu corfu-candidate-overlay djvu el-get ess exercism
+     ghci-completion gnuplot haskell-mode helm-R html2org jupyter justl leetcode
+     lsp-haskell lsp-mode nov ob-ipython ob-latex-as-png ob-mermaid ob-nix
+     org-download org-drill org-pdftools org-pomodoro org-ql org-roam
+     org-roam-ui pdf-tools persist rustic sx tldr uv-mode wiki-summary wikinfo)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

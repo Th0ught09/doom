@@ -1,9 +1,8 @@
 ;=================================================================
 ; Doom
 ;=================================================================
-(setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 20 :weight 'semi-light))
-(setq doom-theme 'cu-doom-gruvbox-light)
-(setq doom-gruvbox-light-variant "soft")
+(setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 12 :weight 'semi-light))
+(setq doom-theme 'doom-gruvbox-light)
 (setq display-line-numbers-type 'visual)
 (setq display-line-numbers 'visual)
 
@@ -84,9 +83,9 @@
   (cfw:open-calendar-buffer
    :contents-sources
    (list
-    (cfw:org-create-source "Purple"))))
-    ; all in agenda(cfw:ical-create-source "Uni" "https://scientia-eu-v4-api-d3-02.azurewebsites.net//api/ical/b5098763-4476-40a6-8d60-5a08e9c52964/33ff0a46-42c9-fa35-e710-20a89e30a8cd/timetable.ics" "Red")
-    ; all in agenda(cfw:ical-create-source "Life" "https://calendar.proton.me/api/calendar/v1/url/1RZQ6qxSo4AGgUOR_cCVlj9d_KXgckkAdOEN0wszIXMvSXALutYgoIiNWltRW2q5_EUdfmwf4zwM2wYdDIPdCA==/calendar.ics?CacheKey=CuxtvSb__5z15LJQckBW7w%3D%3D&PassphraseKey=cHyl07vC-qgAdoCiCQZZZvcItem-zCk6fYfdCnn1_E4%3D" "Black"))))
+    (cfw:org-create-source "Purple")
+    (cfw:ical-create-source "Uni" "https://scientia-eu-v4-api-d3-02.azurewebsites.net//api/ical/b5098763-4476-40a6-8d60-5a08e9c52964/33ff0a46-42c9-fa35-e710-20a89e30a8cd/timetable.ics" "Red")
+    (cfw:ical-create-source "Life" "https://calendar.proton.me/api/calendar/v1/url/1RZQ6qxSo4AGgUOR_cCVlj9d_KXgckkAdOEN0wszIXMvSXALutYgoIiNWltRW2q5_EUdfmwf4zwM2wYdDIPdCA==/calendar.ics?CacheKey=CuxtvSb__5z15LJQckBW7w%3D%3D&PassphraseKey=cHyl07vC-qgAdoCiCQZZZvcItem-zCk6fYfdCnn1_E4%3D" "Black"))))
 
 (defun calendar-init ()
   ;; switch to existing calendar buffer if applicable
@@ -146,7 +145,6 @@
 (setq org-startup-with-latex-preview t)
 (setq emms-source-file-default-directory "~/music/")
 (setq company-mode nil)
-(setq haskell-process-type nil)
 (setq emms-repeat-playlist t)
 (setq org-icalendar-timezone "Europe/London")
 (setq emms-repeat-playlist t)
@@ -169,50 +167,7 @@
 ;; (defun agenda-today ()
 ;;   (interactive)
 ;;   (org-agenda-compute-starting-span 5 'day))
-(defun org-typst-preview ()
-  (interactive)
-  (let (checkdir-flag)
-    (org-element-map
-        (org-element-parse-buffer)
-        '(src-block)
-      (lambda (bl)
-        (when (string= (org-element-property :language bl) "typst")
-            (let* ((start (org-element-property :begin bl))
-                   (value (org-element-property :value bl))
-                   (end (+ start
-                           (length
-                            (string-to-list
-                             (concat "#+begin_src typst" value "#+end_src\n")))))
-                   (fg (plist-get org-format-latex-options :foreground))
-                   (hash (sha1 (prin1-to-string (list value fg))))
-                   (imagetype "svg")
-                   (prefix (concat "typstimg/" "org-typst"))
-                   (absprefix (expand-file-name prefix))
-                   (linkfile (format "%s_%s.%s" prefix hash imagetype))
-                   (movefile (format "%s_%s.%s" absprefix hash imagetype))
-                   (sep "\n\n")
-                   (link (concat sep "[[file:" linkfile "]]" sep)))
-              (unless checkdir-flag ; Ensure the directory exists.
-                (setq checkdir-flag t)
-                (let ((todir (file-name-directory absprefix)))
-                  (unless (file-directory-p todir)
-                    (make-directory todir t))))
-              (unless (file-exists-p movefile)
-                (with-temp-buffer
-                  (insert "#set text(size: 12pt, fill: rgb(\"#ffffff\"))\n#set page(background: rgb(\"fbf1c7\"), width: auto, height: auto, margin: 10pt)\n")
-                  (insert value)
-                  (let* ((temp-file (make-temp-file ""))
-                         (command (format
-                                   "typst compile %s %s" temp-file movefile)))
-                    (write-file temp-file)
-                    (shell-command command))))
-              (progn
-                (dolist (o (overlays-in start end))
-                  (when (eq (overlay-get o 'org-overlay-type)
-                            'org-latex-overlay)
-                    (delete-overlay o)))
-                (org--make-preview-overlay start end movefile imagetype)
-                (goto-char end))))))))
+
 ;=================================================================
 ; bindings
 ; =================================================================
@@ -511,13 +466,5 @@ See `pdf-links-action-perform' for the interface."
     (pdf-annot-add-markup-annotation
      edges 'highlight '"yellow") nil))
 
-(setq-default org-download-image-dir "~/org/images")
-(add-hook 'dired-mode-hook 'org-download-enable)
 
-(after! org-download
-      (setq org-download-method 'directory)
-      (setq org-download-image-dir (concat (file-name-sans-extension (buffer-file-name)) "-img"))
-      (setq org-download-image-org-width 600)
-      (setq org-download-link-format "[[file:%s]]\n"
-        org-download-abbreviate-filename-function #'file-relative-name)
-      (setq org-download-link-format-function #'org-download-link-format-function-default))
+k
