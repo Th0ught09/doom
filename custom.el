@@ -8,11 +8,7 @@
      "691d671429fa6c6d73098fc6ff05d4a14a323ea0a18787daeb93fde0e48ab18b" default))
  '(diary-file "~/org/diary.org")
  '(org-agenda-files
-   '("~/org/agenda/calendar.org"
-     "/home/kirkm/org/agenda/20260201202137-internet_of_things_index.org"
-     "/home/kirkm/org/agenda/20260201202122-chip_multiprogramming_index.org"
-     "/home/kirkm/org/agenda/20260201202132-maths_systems_and_complexity_index.org"
-     "/home/kirkm/org/agenda/20260201202142-agile_index.org"
+   '("~/org/agenda/mc_index.org" "/home/kirkm/org/agenda/calendar.org"
      "/home/kirkm/org/agenda/20250726080620-admin.org"
      "/home/kirkm/org/agenda/20250616203545-x86_schedule.org"
      "/home/kirkm/org/agenda/20250617071133-org_schedule.org"
