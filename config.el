@@ -229,16 +229,14 @@
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
 (global-set-key (kbd "M-C-h") help-map)
-(global-set-key (kbd "C-h") 'windmove-left)
-(global-set-key (kbd "C-l") 'windmove-right)
-(global-set-key (kbd "C-j") 'windmove-down)
-(global-set-key (kbd "C-k") 'windmove-up)
-(global-set-key (kbd "<normal state> L") 'centaur-tabs-forward)
-(global-set-key (kbd "<normal state> H") 'centaur-tabs-backward)
-(local-unset-key (kbd "C-j"))
 (local-unset-key (kbd "C-k"))
 (local-unset-key (kbd "S-l"))
 (local-unset-key (kbd "S-h"))
+(global-set-key (kbd "C-h") 'windmove-left)
+(global-set-key (kbd "C-l") 'windmove-right)
+(global-set-key (kbd "C-k") 'windmove-up)
+(global-set-key (kbd "<normal state> L") 'centaur-tabs-forward)
+(global-set-key (kbd "<normal state> H") 'centaur-tabs-backward)
 (require 's)
 
 ;=================================================================
@@ -305,6 +303,8 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (add-hook 'org-mode-hook
           (lambda ()
+            (local-unset-key (kbd "C-j"))
+            (global-set-key (kbd "C-j") 'windmove-down)
             (evil-define-key 'normal org-mode-map (kbd "C-k") nil)
             (evil-define-key 'normal org-mode-map (kbd "C-j") nil)))
 
@@ -521,3 +521,4 @@ See `pdf-links-action-perform' for the interface."
       (setq org-download-link-format "[[file:%s]]\n"
         org-download-abbreviate-filename-function #'file-relative-name)
       (setq org-download-link-format-function #'org-download-link-format-function-default))
+
