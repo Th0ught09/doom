@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: gpi
+# key: gpi
+# condition: t
+# --
+#+begin_src gnuplot :file img/$1.png :term png small size 480,320 :exports both
+$0
+#+end_src
