@@ -133,6 +133,7 @@
 (add-hook 'org-mode-hook 'abbrev-hook)
 (add-hook 'minibuffer-mode-hook 'abbrev-hook)
 (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 (defun abbrev-hook ()
   (abbrev-mode 1))
 
@@ -163,39 +164,40 @@
 ; functions
 ;=================================================================
 
-;; (defun my/org-pomodoro-zenity-notify (&rest _args)
-;;   (start-process-shell-command
-;;    "zenity-notify"
-;;    nil
-;;    "zenity --info --text='Pomodoro finished!'"))
+(defun my/org-pomodoro-zenity-notify (&rest _args)
+  (start-process-shell-command
+   "zenity-notify"
+   nil
+   "zenity --info --text='Pomodoro finished!'"))
 
 (defun my/org-pomodoro-break-zenity-notify (&rest _args)
   (start-process-shell-command
    "zenity-notify"
    nil
    "zenity --info --text='Break finished!'"))
-;; (advice-add 'org-pomodoro-finish :after #'my/org-pomodoro-zenity-notify)
+
+(advice-add 'org-pomodoro-finish :after #'my/org-pomodoro-zenity-notify)
 (advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
 
-(defun org-pomodoro-finished ()
-  "Is invoked when a pomodoro was finished successfully.
-This may send a notification, play a sound and start a pomodoro break."
-  (interactive)
-  (unless org-pomodoro-clock-break
-      (org-clock-out nil t))
-  (org-pomodoro-maybe-play-sound :pomodoro)
-  (setq org-pomodoro-count (+ org-pomodoro-count 1))
-  (if (zerop (mod org-pomodoro-count org-pomodoro-long-break-frequency))
-      (org-pomodoro-start :long-break)
-    (org-pomodoro-start :short-break))
-  (org-pomodoro-notify "Pomodoro completed!" "Time for a break.")
-    (start-process-shell-command
-    "zenity notify"
-    nil
-    "zenity --info --text='Pomodoro finished!'")
-  (org-pomodoro-update-mode-line)
-  (org-agenda-maybe-redo)
-  (run-hooks 'org-pomodoro-finished-hook))
+;; (defun org-pomodoro-finished ()
+;;   "Is invoked when a pomodoro was finished successfully.
+;; This may send a notification, play a sound and start a pomodoro break."
+;;   (interactive)
+;;   (unless org-pomodoro-clock-break
+;;       (org-clock-out nil t))
+;;   (org-pomodoro-maybe-play-sound :pomodoro)
+;;   (setq org-pomodoro-count (+ org-pomodoro-count 1))
+;;   (if (zerop (mod org-pomodoro-count org-pomodoro-long-break-frequency))
+;;       (org-pomodoro-start :long-break)
+;;     (org-pomodoro-start :short-break))
+;;   (org-pomodoro-notify "Pomodoro completed!" "Time for a break.")
+;;     (start-process-shell-command
+;;     "zenity notify"
+;;     nil
+;;     "zenity --info --text='Pomodoro finished!'")
+;;   (org-pomodoro-update-mode-line)
+;;   (org-agenda-maybe-redo)
+;;   (run-hooks 'org-pomodoro-finished-hook))
 
 (defun window-back (n)
   "Move back a window"
