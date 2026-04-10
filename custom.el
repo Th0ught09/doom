@@ -8,7 +8,7 @@
      "691d671429fa6c6d73098fc6ff05d4a14a323ea0a18787daeb93fde0e48ab18b" default))
  '(diary-file "~/org/diary.org")
  '(org-agenda-files
-   '("~/org/agenda/20250902183723-elisp_index.org"
+   '("~/org/notes.org" "/home/kirkm/org/agenda/20250902183723-elisp_index.org"
      "/home/kirkm/org/agenda/20250616203545-x86_schedule.org"
      "/home/kirkm/org/agenda/20250617071133-org_schedule.org"
      "/home/kirkm/org/agenda/20250625082757-pandas_todo.org"
