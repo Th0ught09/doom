@@ -165,6 +165,7 @@
 ;=================================================================
 
 (defun my/org-pomodoro-zenity-notify (&rest _args)
+  (emms-pause)
   (start-process-shell-command
    "zenity-notify"
    nil
@@ -178,6 +179,12 @@
 
 (advice-add 'org-pomodoro-finish :after #'my/org-pomodoro-zenity-notify)
 (advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
+
+(defun simplified-beginning-of-buffer ()
+  "move point to beginning of buffer"
+  (interactive)
+  (push-mark)
+  (goto-char (point-min)))
 
 (defun window-back (n)
   "Move back a window"
