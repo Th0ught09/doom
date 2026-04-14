@@ -253,6 +253,7 @@
 (global-set-key (kbd "M-i") 'ace-window)
 (global-set-key (kbd "C-c f") 'org-roam-node-find)
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
+(global-set-key (kbd "C-c s") 'org-grep)
 ;; (global-set-key (kbd "C-c d a") (org-agenda-day-view 4))
 (global-set-key (kbd "C-c r") 'org-roam-refile)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
