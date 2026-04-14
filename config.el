@@ -193,7 +193,11 @@
 
 (defun org-grep ()
     "grep in local org directory"
-  (interactive "sType the needed expression: "))
+    (interactive)
+    (org-save-all-org-buffers)
+    (if (use-region-p)
+        (rgrep (buffer-substring (region-beginning) (region-end)) "*.org" "~/org")
+      (rgrep (read-string "enter string: ") "*.org" "~/org")))
 
 (defun org-typst-preview ()
   (interactive)
