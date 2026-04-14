@@ -190,9 +190,6 @@
   "Move back a window"
   (interactive "p")
   (other-window (- n)))
-;; (defun agenda-today ()
-;;   (interactive)
-;;   (org-agenda-compute-starting-span 5 'day))
 (defun org-typst-preview ()
   (interactive)
   (let (checkdir-flag)
