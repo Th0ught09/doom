@@ -190,6 +190,11 @@
   "Move back a window"
   (interactive "p")
   (other-window (- n)))
+
+(defun org-grep ()
+    "grep in local org directory"
+  (interactive "sType the needed expression: "))
+
 (defun org-typst-preview ()
   (interactive)
   (let (checkdir-flag)
