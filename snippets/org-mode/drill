@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: drill
+# key: drl
+# condition: t
+# --
+
+* $1 :drill:
+$2
+** ans
+$0
