@@ -1,3 +1,6 @@
+;;; Package -- summary
+;;; Commentary:
+;;; Code:
 ;=================================================================
 ; Doom
 ;=================================================================
@@ -7,7 +10,7 @@
 (setq display-line-numbers-type 'visual)
 (setq display-line-numbers 'visual)
 
-(require 'cl)
+;; (require 'cl)
 
 
 ;=================================================================
@@ -137,6 +140,22 @@
 (defun abbrev-hook ()
   (abbrev-mode 1))
 
+
+;=================================================================
+; modes
+; =================================================================
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-j") 'windmove-down)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)
 ;=================================================================
 ; settings
 ; =================================================================
