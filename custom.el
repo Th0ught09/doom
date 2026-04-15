@@ -69,10 +69,10 @@
  '(package-selected-packages
    '(ace-window cabal-mode corfu corfu-candidate-overlay djvu el-get ess exercism
      gdscript-mode ghci-completion gnuplot haskell-mode helm-R html2org jupyter
-     justl leetcode lsp-haskell lsp-mode nov ob-ipython ob-latex-as-png
-     ob-mermaid ob-nix org-download org-drill org-pdftools org-pomodoro org-ql
-     org-roam org-roam-ui pdf-tools persist rustic sx tldr uv-mode wiki-summary
-     wikinfo)))
+     justl leetcode lsp-haskell lsp-mode nasm-mode nov ob-ipython
+     ob-latex-as-png ob-mermaid ob-nix org-download org-drill org-pdftools
+     org-pomodoro org-ql org-roam org-roam-ui pdf-tools persist rustic sx tldr
+     uv-mode wiki-summary wikinfo x86-lookup)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
