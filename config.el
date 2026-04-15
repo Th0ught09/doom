@@ -177,7 +177,7 @@
    nil
    "zenity --info --text='Break finished!'"))
 
-(advice-add 'org-pomodoro-finish :after #'my/org-pomodoro-zenity-notify)
+(advice-add 'org-pomodoro-finished :after #'my/org-pomodoro-zenity-notify)
 (advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
 
 (defun simplified-beginning-of-buffer ()
@@ -254,18 +254,19 @@
 (global-set-key (kbd "C-c f") 'org-roam-node-find)
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
 (global-set-key (kbd "C-c s") 'org-grep)
-;; (global-set-key (kbd "C-c d a") (org-agenda-day-view 4))
 (global-set-key (kbd "C-c r") 'org-roam-refile)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
 (global-set-key (kbd "M-C-h") help-map)
 (local-unset-key (kbd "C-k"))
+(local-unset-key (kbd "C-j"))
 (local-unset-key (kbd "S-l"))
 (local-unset-key (kbd "S-h"))
 (global-set-key (kbd "C-h") 'windmove-left)
 (global-set-key (kbd "C-l") 'windmove-right)
 (global-set-key (kbd "C-k") 'windmove-up)
+(global-set-key (kbd "C-j") 'windmove-down)
 (global-set-key (kbd "<normal state> L") 'centaur-tabs-forward)
 (global-set-key (kbd "<normal state> H") 'centaur-tabs-backward)
 (require 's)
@@ -335,9 +336,9 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (local-unset-key (kbd "C-j"))
-           (global-set-key (kbd "C-j") 'windmove-down)
             (evil-define-key 'normal org-mode-map (kbd "C-k") nil)
-            (evil-define-key 'normal org-mode-map (kbd "C-j") nil)))
+            (evil-define-key 'normal org-mode-map (kbd "C-j") nil)
+           (global-set-key (kbd "C-j") 'windmove-down)))
 
 (add-hook 'evil-mode-hook
           (lambda ()
