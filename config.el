@@ -92,7 +92,7 @@
     ; all in agenda(cfw:ical-create-source "Life" "https://calendar.proton.me/api/calendar/v1/url/1RZQ6qxSo4AGgUOR_cCVlj9d_KXgckkAdOEN0wszIXMvSXALutYgoIiNWltRW2q5_EUdfmwf4zwM2wYdDIPdCA==/calendar.ics?CacheKey=CuxtvSb__5z15LJQckBW7w%3D%3D&PassphraseKey=cHyl07vC-qgAdoCiCQZZZvcItem-zCk6fYfdCnn1_E4%3D" "Black"))))
 
 (defun calendar-init ()
-  ;; switch to existing calendar buffer if applicable
+  "Switch to existing calendar buffer if applicable."
   (if-let (win (cl-find-if (lambda (b) (string-match-p "^\\*cfw:" (buffer-name b)))
                            (doom-visible-windows)
                            :key #'window-buffer))
@@ -514,7 +514,7 @@ See `pdf-links-action-perform' for the interface."
       (pdf-view-redisplay))))
 
 (defun avy-timed-input ()
-  "BORROWED FORM `avy--read-candidates'"
+  "BORROWED FORM `avy--read-candidates'."
   (let ((str "")
         char break)
     (while (and (not break)
