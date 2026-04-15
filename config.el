@@ -180,7 +180,7 @@
 (setq org-agenda-start-day "-0d")
 
 ;=================================================================
-; functions
+; poodoro
 ;=================================================================
 
 (defun my/org-pomodoro-zenity-notify (&rest _args)
@@ -198,6 +198,11 @@
 
 (advice-add 'org-pomodoro-finished :after #'my/org-pomodoro-zenity-notify)
 (advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
+
+;=================================================================
+; functions
+;=================================================================
+
 
 (defun simplified-beginning-of-buffer ()
   "move point to beginning of buffer"
