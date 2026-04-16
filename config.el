@@ -134,6 +134,7 @@
 
 (add-hook 'justl-mode-hook (lambda () (evil-local-mode -1)))
 (add-hook 'org-mode-hook 'abbrev-hook)
+(add-hook 'Info-mode-hook (lambda() (evil-local-mode -1)))
 (add-hook 'minibuffer-mode-hook 'abbrev-hook)
 (add-hook 'pdf-view-mode-hook 'pdf-view-midnight-minor-mode)
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
