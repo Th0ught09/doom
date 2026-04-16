@@ -281,6 +281,7 @@
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
 (global-set-key (kbd "C-c s") 'org-grep)
 (global-set-key (kbd "C-c r") 'org-roam-refile)
+(global-set-key (kbd "C-c a") 'org-download-yank)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
