@@ -179,7 +179,6 @@
 (setq evil-shift-width 4)
 (setq org-agenda-span 'day)
 (setq org-agenda-start-day "-0d")
-
 (org-roam-db-autosync-mode)
 ;=================================================================
 ; poodoro
