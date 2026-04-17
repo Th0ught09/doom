@@ -418,7 +418,7 @@ The screenshot tool is determined by `org-download-screenshot-method'."
                 "pngpaste %s"
               (user-error
                "Please install the \"pngpaste\" program from Homebrew."))))))
-    (org-id-get-create)
+    ;; (org-id-get-create)
     (org-download-screenshot basename)))
 
 (declare-function org-attach-dir "org-attach")
@@ -571,7 +571,7 @@ It's inserted before the image link and is used to annotate it.")
     (if (looking-back "^[ \t]+" line-beg)
         (delete-region (match-beginning 0) (match-end 0))
       (newline))
-    (insert (funcall org-download-annotate-function link))
+    ;; (insert (funcall org-download-annotate-function link))
     (dolist (attr org-download-image-attr-list)
       (insert attr "\n"))
     (insert (if (= org-download-image-html-width 0)
@@ -580,9 +580,9 @@ It's inserted before the image link and is used to annotate it.")
     (insert (if (= org-download-image-latex-width 0)
                 ""
               (format "#+attr_latex: :width %dcm\n" org-download-image-latex-width)))
-    (insert (if (= org-download-image-org-width 0)
-                ""
-              (format "#+attr_org: :width %dpx\n" org-download-image-org-width)))
+    ;; (insert (if (= org-download-image-org-width 0)
+    ;;             ""
+    ;;           (format "#+attr_org: :width %dpx\n" org-download-image-org-width)))
     (insert (funcall org-download-link-format-function filename))
     (org-download--display-inline-images)
     (setq str (buffer-substring-no-properties line-beg (point)))
