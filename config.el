@@ -180,6 +180,7 @@
 (setq org-agenda-span 'day)
 (setq org-agenda-start-day "-0d")
 (org-roam-db-autosync-mode)
+(setq org-roam-dailies-directory "~/org/daily")
 ;=================================================================
 ; poodoro
 ;=================================================================
@@ -280,7 +281,7 @@
 (global-set-key (kbd "C-c i") 'org-roam-node-insert)
 (global-set-key (kbd "C-c s") 'org-grep)
 (global-set-key (kbd "C-c r") 'org-roam-refile)
-(global-set-key (kbd "C-c a") 'org-download-yank)
+(global-set-key (kbd "C-c a") 'org-download-clipboard)
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
@@ -346,6 +347,7 @@
 (setq org-agenda-files
       (append
        (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
+       (directory-files-recursively (expand-file-name "~/org/daily")  "\\.org$")
        (directory-files-recursively (expand-file-name "~/recall")  "\\.org$")))
 
 
@@ -419,6 +421,7 @@
 ;=================================================================
 ; download
 ;=================================================================
+(add-to-list 'load-path "~/Dotfiles/.config/doom/lisp")
 (require 'org-download)
 (setq org-download-image-dir "~/org/images/")
 ;=================================================================
