@@ -201,7 +201,9 @@
 ;=================================================================
 
 (defun my/org-pomodoro-zenity-notify (&rest _args)
-  (emms-pause)
+  (if (not emms-player-paused-p)
+        (emms-pause)
+  )
   (start-process-shell-command
    "zenity-notify"
    nil
