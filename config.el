@@ -210,13 +210,16 @@
    "zenity --info --text='Pomodoro finished!'"))
 
 (defun my/org-pomodoro-break-zenity-notify (&rest _args)
+  (if emms-player-paused-p
+        (emms-pause)
+  )
   (start-process-shell-command
    "zenity-notify"
    nil
    "zenity --info --text='Break finished!'"))
 
 (advice-add 'org-pomodoro-finished :after #'my/org-pomodoro-zenity-notify)
-(advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
+;; (advice-add 'org-pomodoro-short-break-finished :after #'my/org-pomodoro-break-zenity-notify)
 
 ;=================================================================
 ; functions
