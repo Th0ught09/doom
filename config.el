@@ -97,7 +97,7 @@
                            (doom-visible-windows)
                            :key #'window-buffer))
       (select-window win)
-    (calendar-helper)))
+        (calendar-helper)))
 (defun =my-calendar ()
   "Activate (or switch to) *my* `calendar' in its workspace."
   (interactive)
@@ -140,6 +140,18 @@
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 (defun abbrev-hook ()
   (abbrev-mode 1))
+(add-hook 'org-pomodoro-short-break-finished-hook (lambda ()
+        (start-process-shell-command
+        "zenity-notify"
+        nil
+        "zenity --info --text='Break finished!'")
+        (let ((ans (read-string "Would you like to select the next pomodoro?")))
+            (if ans
+                (let ((current-prefix-arg '(4)))
+                (call-interactively 'org-clock-in)
+                (if emms-player-paused-p (emms-pause))
+                (org-pomodoro-start :pomodoro))))))
+
 
 
 ;=================================================================
