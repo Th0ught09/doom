@@ -145,12 +145,11 @@
         "zenity-notify"
         nil
         "zenity --info --text='Break finished!'")
-        (let ((ans (read-string "Would you like to select the next pomodoro?")))
-            (if ans
+            (if (y-or-n-p  "Would you like to select the next pomodoro? ")
                 (let ((current-prefix-arg '(4)))
                 (call-interactively 'org-clock-in)
                 (if emms-player-paused-p (emms-pause))
-                (org-pomodoro-start :pomodoro))))))
+                (org-pomodoro-start :pomodoro)))))
 
 
 
@@ -289,6 +288,13 @@
                     (delete-overlay o)))
                 (org--make-preview-overlay start end movefile imagetype)
                 (goto-char end))))))))
+
+
+(defun insert-drill ()
+    (interactive)
+    (yas-insert-snippet "drill")
+    )
+
 ;=================================================================
 ; bindings
 ; =================================================================
@@ -433,9 +439,9 @@
    (jupyter . t)))
 
 (setq ob-async-no-async-languages-alist '("jupyter-python"))
-(setq gnutls-trustfiles
-      (append gnutls-trustfiles
-              '("~/.jupyter/jupyter.crt")))
+;; (setq gnutls-trustfiles
+;;       (append gnutls-trustfiles
+;;               '("~/.jupyter/jupyter.crt")))
 (setq ob-async-no-async-languages-alist '("jupyter-python"))
 
 ;=================================================================
@@ -607,4 +613,3 @@ See `pdf-links-action-perform' for the interface."
       (setq org-download-link-format "[[file:%s]]\n"
         org-download-abbreviate-filename-function #'file-relative-name)
       (setq org-download-link-format-function #'org-download-link-format-function-default))
-
