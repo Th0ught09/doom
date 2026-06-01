@@ -224,6 +224,14 @@
 ; functions
 ;=================================================================
 
+;; (defun org-roam-dailies-goto-tomorrow ())
+;;     (interactive)
+;;     (org-roam-dailies--capture
+;;     (org-read-date nil t
+;;     (format-time-string "%F"
+;;     (seconds-to-time
+;;     (+
+;;     (time-convert nil 'integer) 86400)))))
 
 (defun simplified-beginning-of-buffer ()
   "move point to beginning of buffer"
