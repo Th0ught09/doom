@@ -300,8 +300,19 @@
 
 (defun insert-drill ()
     (interactive)
-    (yas-insert-snippet "drill")
+    (org-previous-visible-heading 2)
+    (let ((heading (substring (org-get-heading) 0 (- (length (org-get-heading)) 8))))
+    (goto-char (point-max))
+    (yas-expand-snippet (yas-lookup-snippet "drill"))
+    (insert heading)
+    (yas-next-field-or-maybe-expand)
     )
+    )
+
+(defun test ()
+    (interactive)
+    (insert (org-get-heading))
+)
 
 ;=================================================================
 ; bindings
