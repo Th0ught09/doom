@@ -330,6 +330,7 @@
 (global-set-key (kbd "C-c d m") 'org-roam-dailies-goto-tomorrow)
 (global-set-key (kbd "C-c d t") 'org-roam-dailies-goto-today)
 (global-set-key (kbd "C-c p d") 'org-pdfview-store-link)
+(global-set-key (kbd "C-c d i") 'insert-drill)
 (global-set-key (kbd "M-C-h") help-map)
 (local-unset-key (kbd "C-k"))
 (local-unset-key (kbd "C-j"))
