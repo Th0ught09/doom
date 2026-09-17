@@ -8,7 +8,7 @@
      "691d671429fa6c6d73098fc6ff05d4a14a323ea0a18787daeb93fde0e48ab18b" default))
  '(diary-file "~/org/diary.org")
  '(org-agenda-files
-   '("~/org/notes.org" "/home/kirkm/org/agenda/20250902183723-elisp_index.org"
+   '("~/projects/regli/regli/regli.org"
      "/home/kirkm/org/agenda/20250616203545-x86_schedule.org"
      "/home/kirkm/org/agenda/20250617071133-org_schedule.org"
      "/home/kirkm/org/agenda/20250625082757-pandas_todo.org"
@@ -27,6 +27,8 @@
      "/home/kirkm/org/agenda/20250818080514-os_schedule_policies.org"
      "/home/kirkm/org/agenda/20250825135146-schedule.org"
      "/home/kirkm/org/agenda/20250902164026-asm_index.org"
+     "/home/kirkm/org/agenda/20250902183723-elisp_index.org"
+     "/home/kirkm/org/agenda/20251215181721-sword_world.org"
      "/home/kirkm/org/agenda/20260317195637-day_planner.org"
      "/home/kirkm/org/agenda/admin.org" "/home/kirkm/org/agenda/ads_index.org"
      "/home/kirkm/org/agenda/agile_index.org"
@@ -58,21 +60,47 @@
      "/home/kirkm/org/agenda/ux_index.org"
      "/home/kirkm/org/agenda/vim_index.org"
      "/home/kirkm/org/agenda/website_index.org"
-     "/home/kirkm/recall/20250915191341-distributed_system.org"
-     "/home/kirkm/recall/agile.org" "/home/kirkm/recall/cities.org"
-     "/home/kirkm/recall/cmp.org" "/home/kirkm/recall/dist.org"
-     "/home/kirkm/recall/iot.org" "/home/kirkm/recall/lc_revision.org"
-     "/home/kirkm/recall/palace.org" "/home/kirkm/recall/spanish.org"
-     "/home/kirkm/recall/ux_revision.org"))
+     "/home/kirkm/org/recall/20250915191341-distributed_system.org"
+     "/home/kirkm/org/recall/agile.org" "/home/kirkm/org/recall/cities.org"
+     "/home/kirkm/org/recall/cmp.org" "/home/kirkm/org/recall/dist.org"
+     "/home/kirkm/org/recall/iot.org" "/home/kirkm/org/recall/italian.org"
+     "/home/kirkm/org/recall/lc_revision.org" "/home/kirkm/org/recall/mil.org"
+     "/home/kirkm/org/recall/palace.org" "/home/kirkm/org/recall/spanish.org"
+     "/home/kirkm/org/recall/ux_revision.org" "/home/kirkm/org/todos.org"))
+ '(org-capture-templates
+   '(("t" "Personal todo" entry (file+headline +org-capture-todo-file "Inbox")
+      "* [ ] %?\12%i\12%a" :prepend t)
+     ("n" "Personal notes" entry (file+headline +org-capture-notes-file "Inbox")
+      "* %u %?\12%i\12%a" :prepend t)
+     ("j" "Journal" entry (file+olp+datetree +org-capture-journal-file)
+      "* %u %?\12%i\12%a" :prepend t)
+     ("p" "Templates for projects")
+     ("pt" "Project-local todo" entry
+      (file+headline +org-capture-project-todo-file "Inbox")
+      "* TODO %?\12%i\12%a" :prepend t)
+     ("pn" "Project-local notes" entry
+      (file+headline +org-capture-project-notes-file "Inbox")
+      "* %U %?\12%i\12%a" :prepend t)
+     ("pc" "Project-local changelog" entry
+      (file+headline +org-capture-project-changelog-file "Unreleased")
+      "* %U %?\12%i\12%a" :prepend t)
+     ("o" "Centralized templates for projects")
+     ("ot" "Project todo" entry #'+org-capture-central-project-todo-file
+      "* TODO %?\12 %i\12 %a" :heading "Tasks" :prepend nil)
+     ("on" "Project notes" entry #'+org-capture-central-project-notes-file
+      "* %U %?\12 %i\12 %a" :prepend t :heading "Notes")
+     ("oc" "Project changelog" entry
+      #'+org-capture-central-project-changelog-file "* %U %?\12 %i\12 %a"
+      :prepend t :heading "Changelog")))
  '(org-directory "~/org")
  '(org-roam-directory "/home/kirkm/org/")
  '(package-selected-packages
-   '(ace-window cabal-mode corfu corfu-candidate-overlay djvu el-get ess exercism
-     gdscript-mode ghci-completion gnuplot haskell-mode helm-R html2org jupyter
-     justl leetcode lsp-haskell lsp-mode nasm-mode nov ob-ipython
-     ob-latex-as-png ob-mermaid ob-nix org-drill org-pdftools org-pomodoro
-     org-ql org-roam org-roam-ui pdf-tools persist rustic sx tldr uv-mode
-     wiki-summary wikinfo x86-lookup)))
+   '(ace-window cabal-mode chess corfu corfu-candidate-overlay djvu el-get ess
+     exercism gdscript-mode ghci-completion gnuplot haskell-mode helm-R html2org
+     julia-snail jupyter justl leetcode lsp-haskell lsp-mode nasm-mode nov
+     ob-ipython ob-latex-as-png ob-mermaid ob-nix org-drill org-pdftools
+     org-pomodoro org-ql org-roam org-roam-ui org-trello pdf-tools persist
+     rustic sx tldr uv-mode wiki-summary wikinfo x86-lookup)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

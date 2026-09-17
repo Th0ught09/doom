@@ -1,11 +1,11 @@
-;;; Package -- summary
+﻿;;; Package -- summary
 ;;; Commentary:
 ;;; Code:
 ;=================================================================
 ; Doom
 ;=================================================================
 (setq doom-font (font-spec :family "IosevkaTerm Nerd Font" :size 20 :weight 'semi-light))
-(setq doom-theme 'cu-doom-gruvbox-light)
+(setq doom-theme 'doom-gruvbox-light)
 (setq doom-gruvbox-light-variant "soft")
 (setq display-line-numbers-type 'visual)
 (setq display-line-numbers 'visual)
@@ -18,7 +18,7 @@
 ;=================================================================
 
 (eval-when-compile
-  (add-to-list 'load-path "/nix/store/0m88mq6p3mdlq6fi6199qmma2cazisfc-emacs-mu4e-1.12.11/share/emacs/site-lisp/elpa/mu4e-1.12.11")
+  (add-to-list 'load-path "/nix/store/p7bxjgdv4l643xmnywzpc2kx2pm6xnlm-emacs-mu4e-1.12.13/share/emacs/site-lisp/elpa/mu4e-1.12.13/")
   (require 'use-package))
 
 (use-package mu4e
@@ -175,6 +175,7 @@
 (setq! scroll-margin 8)
 (setq! find-file-visit-truename nil)
 (setq evil-shift-width 4)
+(setq org-roam-directory "~/org")
 (setq org-startup-with-latex-preview t)
 (setq emms-source-file-default-directory "~/music/")
 (setq company-mode nil)
@@ -196,7 +197,7 @@
 (org-roam-db-autosync-mode)
 (setq org-roam-dailies-directory "~/org/daily")
 ;=================================================================
-; poodoro
+; pomodoro
 ;=================================================================
 
 (defun my/org-pomodoro-zenity-notify (&rest _args)
@@ -302,7 +303,7 @@
     (interactive)
     (org-previous-visible-heading 2)
     (let ((heading (substring (org-get-heading) 0 (- (length (org-get-heading)) 8))))
-    (goto-char (point-max))
+    (org-forward-heading-same-level 1)
     (yas-expand-snippet (yas-lookup-snippet "drill"))
     (insert heading)
     (yas-next-field-or-maybe-expand)
@@ -383,6 +384,13 @@
    (org-export-icalendar-combine-agenda-files)))
 
 ;=================================================================
+; variables
+; =================================================================
+(setq
+ user-full-name "Matthew Kirk"
+ mml-default-directory "~/org/docs/")
+
+;=================================================================
 ; org
 ; =================================================================
 
@@ -393,8 +401,8 @@
 (setq org-agenda-files
       (append
        (directory-files-recursively (expand-file-name "~/org/agenda")  "\\.org$")
-       (directory-files-recursively (expand-file-name "~/org/daily")  "\\.org$")
-       (directory-files-recursively (expand-file-name "~/recall")  "\\.org$")))
+       (directory-files-recursively (expand-file-name "~/org/recall")  "\\.org$")
+      '("~/org/todos.org")))
 
 
 
@@ -433,8 +441,14 @@
     '(("d" "default" plain "%?"
        :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
                           "#+title: ${title}\n")
-       :unnarrowed t))
+       :unnarrowed t)
+      )
 )
+
+(setq org-capture-templates '(("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
+                               "* %U\n %?")
+                              ("t" "Todos" entry (file+olp+datetree "~/org/todos.org")
+                               "* TODO %?")))
 
 (setq org-icalendar-combined-agenda-file "/ssh:pi@192.168.0.11:/var/www/th0ught09.online/calendar.ics")
 
@@ -455,7 +469,8 @@
  'org-babel-load-languages
  '((emacs-lisp . t)
    (python . t)
-   (jupyter . t)))
+   (jupyter . t)
+    (haskell . t)))
 
 (setq ob-async-no-async-languages-alist '("jupyter-python"))
 ;; (setq gnutls-trustfiles
@@ -627,8 +642,19 @@ See `pdf-links-action-perform' for the interface."
 
 (after! org-download
       (setq org-download-method 'directory)
-      (setq org-download-image-dir (concat (file-name-sans-extension (buffer-file-name)) "-img"))
       (setq org-download-image-org-width 600)
       (setq org-download-link-format "[[file:%s]]\n"
         org-download-abbreviate-filename-function #'file-relative-name)
       (setq org-download-link-format-function #'org-download-link-format-function-default))
+
+;=================================================================
+; trello
+;=================================================================
+; ;; Ensure 's' library is loaded first to prevent void-variable errors
+; (require 's)
+;
+; (with-eval-after-load 'org
+;   ;; Load org-trello only after org is fully initialized
+;   (when (package-installed-p 'org-trello)
+;     (require 'org-trello)
+;     (setq org-trello-files '("~/trello/fixate.org"))))

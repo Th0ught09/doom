@@ -26,7 +26,6 @@
     ("pcs" "processes" nil :count 0)
     ("prj" "project" nil :count 0)
     ("py" "python" nil :count 0)
-    ("ref" "References" nil :count 11)
     ("res" "research" nil :count 1)
     ("shrt" "shorthand" nil :count 5)
     ("sys" "system" nil :count 1)
